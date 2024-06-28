@@ -15,8 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityBeanInjector {
 
-    private UserRepository userRepository;
-    private AuthenticationConfiguration authenticationConfiguration;
+    private final UserRepository userRepository;
+    private final AuthenticationConfiguration authenticationConfiguration;
     public SecurityBeanInjector(UserRepository UserRepository, AuthenticationConfiguration AuthenticationConfiguration) {
         this.userRepository = UserRepository;
         this.authenticationConfiguration = AuthenticationConfiguration;
@@ -41,7 +41,7 @@ public class SecurityBeanInjector {
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        daoAuthenticationProvider.setUserDetailsService();
+        daoAuthenticationProvider.setUserDetailsService(userDetailsService());
         return daoAuthenticationProvider;
     }
 }
