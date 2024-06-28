@@ -1,6 +1,7 @@
 package com.auth_service.service;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -61,6 +62,14 @@ public class JwtTokenSevice {
             return bearerToken.substring(7);
         }
         return null;
+    }
+    public boolean validateToken(String token, UserDetails userDetails) {
+        try {
+            getUsernameFromToken(token);
+            return true;
+        }catch (JwtException e){
+            return false;
+        }
     }
 
 }
