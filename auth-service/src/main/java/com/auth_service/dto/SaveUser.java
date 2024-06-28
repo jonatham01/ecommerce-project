@@ -17,6 +17,8 @@ public class SaveUser {
     @Size(min = 6, max = 20)
     private String username;
     @Size(min = 6, max = 20)
+    private String name;
+    @Size(min = 6, max = 20)
     private String password;
     @Size(min = 6, max = 20)
     private String repeatedPassword;
