@@ -21,6 +21,7 @@
 
     <modules>
         <module>Auth-service</module>
+        <module>post-service</module>
     </modules>
 
     <properties>
