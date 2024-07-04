@@ -6,6 +6,7 @@ import com.auth_service.service.JwtTokenSevice;
 import com.auth_service.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -44,6 +45,7 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
             );
             authentication.setDetails(new WebAuthenticationDetails(request));
             authentication.setAuthenticated(true);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
             filterChain.doFilter(request, response);
         }
         filterChain.doFilter(request, response);
