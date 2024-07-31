@@ -1,19 +1,9 @@
-package ecommerce_project.post_service.entity;
-
-import jakarta.persistence.*;
-import org.springframework.data.domain.Persistable;
+package ecommerce_project.post_service.dto;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name="post")
-public class Post  {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private BigInteger id;
-
+public class PostDto {
     private String title;
     private String content;
     private String state;
@@ -23,14 +13,6 @@ public class Post  {
     private BigInteger author;
     LocalDateTime creationDate;
     LocalDateTime updatedDate;
-
-    public void setId(BigInteger id) {
-        this.id = id;
-    }
-
-    public BigInteger getId() {
-        return id;
-    }
 
     public String getTitle() {
         return title;
